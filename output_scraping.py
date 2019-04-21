@@ -18,7 +18,7 @@ driver.find_element_by_xpath('//*[@id="link"]').click()
 
 with open('output.csv', 'w') as f:
     writer = csv.writer(f, lineterminator='\n')
-    for no in range(2,5):
+    for no in range(2,501):
         write = []
         no = str(no)
         rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[1]'
@@ -29,9 +29,14 @@ with open('output.csv', 'w') as f:
 
         rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[4]/a'
         titleandauthor = driver.find_element_by_xpath(rank_path).text #タイトルと作者
-        tmp = title_proocessing(titleandauthor)
-        title = tmp[0]
-        author = tmp[1]
+        try:
+            tmp = title_proocessing(titleandauthor)
+            title = tmp[0]
+            author = tmp[1]
+        except TypeError as e:
+            print('catch TypeError:', e)
+
+        
 
 
         rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[4]/span'
