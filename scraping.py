@@ -23,9 +23,10 @@ test = driver.find_elements_by_class_name('library-info-data')
 # print(" ")
 # print(test[3].text)
 
-a = test[1].text
-for b in a:
-    print(b)
+
+# a = test[1].text
+# for b in a:
+#     print(b)
 
 
 
