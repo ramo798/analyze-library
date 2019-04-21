@@ -27,9 +27,13 @@ for no in range(2,501):
     rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[4]/a'
     title = driver.find_element_by_xpath(rank_path).text #タイトル
 
+    rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[4]/span'
+    span = driver.find_element_by_xpath(rank_path).text #出版社と年
+
     print(rank)
     print(num)
     print(title)
+    print(span)
 
 
 
