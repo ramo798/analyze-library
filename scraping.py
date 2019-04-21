@@ -23,15 +23,25 @@ test = driver.find_elements_by_class_name('library-info-data')
 # print(" ")
 # print(test[3].text)
 
-
+# memo:strで返ってきて改行も含まれる。ターミナルでは改行して出てくるけど実際は一つの変数に入っている
 # a = test[1].text
 # for b in a:
 #     print(b)
 
 
+tmp = test[2].text
+print(tmp)
+print("")
+print(tmp[0])
+print("")
+print(tmp[2:4])
 
 # for tmp in test:
-#     print(tmp.text)
+#     tmp = tmp.text
+#     rank = tmp[0]
+#     num = tmp[2:3]
+#     print(rank)
+#     print(num)
 
 sleep(5)
 driver.quit()
