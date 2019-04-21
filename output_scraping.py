@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 import csv
+from modules import title_proocessing
 
 
 options = Options()
@@ -17,7 +18,7 @@ driver.find_element_by_xpath('//*[@id="link"]').click()
 
 with open('output.csv', 'w') as f:
     writer = csv.writer(f, lineterminator='\n')
-    for no in range(2,501):
+    for no in range(2,5):
         write = []
         no = str(no)
         rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[1]'
@@ -27,7 +28,11 @@ with open('output.csv', 'w') as f:
         num = driver.find_element_by_xpath(rank_path).text #冊数
 
         rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[4]/a'
-        title = driver.find_element_by_xpath(rank_path).text #タイトル
+        titleandauthor = driver.find_element_by_xpath(rank_path).text #タイトルと作者
+        tmp = title_proocessing(titleandauthor)
+        title = tmp[0]
+        author = tmp[1]
+
 
         rank_path = '//*[@id="srv_bestreading_index"]/table/tbody/tr[' + no + ']/td[4]/span'
         span = driver.find_element_by_xpath(rank_path).text #出版社と年
@@ -35,26 +40,16 @@ with open('output.csv', 'w') as f:
         print(rank)
         print(num)
         print(title)
+        print(author)
         print(span)
 
         write.append(rank)
         write.append(num)
         write.append(title)
+        write.append(author)
         write.append(span)
 
         writer.writerow(write)
-
-
-
-
-
-    
-    
-    
-
-
-
-
 
 sleep(5)
 f.close()
