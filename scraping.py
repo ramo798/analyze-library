@@ -18,6 +18,7 @@ test = driver.find_elements_by_class_name('library-info-data')
 
 print(type(test[1].text))
 
+
 # for tmp in test:
 #     print(tmp.text)
 
