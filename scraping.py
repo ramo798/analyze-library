@@ -16,7 +16,17 @@ driver.find_element_by_xpath('//*[@id="link"]').click()
 
 test = driver.find_elements_by_class_name('library-info-data')
 
-print(type(test[1].text))
+# memo:elementsはstrで返ってくる
+# print(test[1].text)
+# print(" ")
+# print(test[2].text)
+# print(" ")
+# print(test[3].text)
+
+a = test[1].text
+for b in a:
+    print(b)
+
 
 
 # for tmp in test:
